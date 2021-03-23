@@ -25,13 +25,13 @@ public class SwaggerConfig {
     public Docket docket(Environment environment){
 
         Profiles of = Profiles.of("dev");
-        boolean b = environment.acceptsProfiles(of);
+        boolean isDev = environment.acceptsProfiles(of);
         String[] activeProfiles = environment.getActiveProfiles();
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
 
-                .enable(b)
+                .enable(isDev)
 //                .enable(false) // 关闭 Swagger。 生产环境和开发环境 分别配置
 
                 .select()
